@@ -87,6 +87,13 @@ def verificar_aresta(v1, v2):
 def verificar_percurso(percurso):
     possivel = True
 
+    if len(percurso) == 0:
+        possivel = False
+
+    for v in percurso:
+        if v not in grafo:
+            possivel = False
+
     for i in range(len(percurso) - 1):
         v1 = percurso[i]
         v2 = percurso[i + 1]
@@ -181,48 +188,48 @@ while True:
     print("11 - Menor caminho (busca em largura)")
     print("0 - Sair")
 
-    opcao = input("Escolha uma opcao: ")
+    opcao = input("Escolha uma opcao: ").strip()
 
     if opcao == "1":
-        v = input("Digite o vertice: ")
+        v = input("Digite o vertice: ").strip().upper()
         inserir_vertice(v)
 
     elif opcao == "2":
-        v = input("Digite o vertice: ")
+        v = input("Digite o vertice: ").strip().upper()
         remover_vertice(v)
 
     elif opcao == "3":
-        v1 = input("Digite o primeiro vertice: ")
-        v2 = input("Digite o segundo vertice: ")
+        v1 = input("Digite o primeiro vertice: ").strip().upper()
+        v2 = input("Digite o segundo vertice: ").strip().upper()
         inserir_aresta(v1, v2)
 
     elif opcao == "4":
-        v1 = input("Digite o primeiro vertice: ")
-        v2 = input("Digite o segundo vertice: ")
+        v1 = input("Digite o primeiro vertice: ").strip().upper()
+        v2 = input("Digite o segundo vertice: ").strip().upper()
         remover_aresta(v1, v2)
 
     elif opcao == "5":
         calcular_grau()
 
     elif opcao == "6":
-        v1 = input("Digite o primeiro vertice: ")
-        v2 = input("Digite o segundo vertice: ")
+        v1 = input("Digite o primeiro vertice: ").strip().upper()
+        v2 = input("Digite o segundo vertice: ").strip().upper()
         verificar_aresta(v1, v2)
 
     elif opcao == "7":
-        v = input("Digite o vertice: ")
+        v = input("Digite o vertice: ").strip().upper()
         listar_vizinhos_vertice(v)
 
     elif opcao == "8":
         percurso = input("Digite o percurso separado por espaco: ")
-        percurso = percurso.split()
+        percurso = percurso.upper().split()
         verificar_percurso(percurso)
 
     elif opcao == "9":
         mostrar_grafo()
 
     elif opcao == "10":
-        v = input("Digite o vertice inicial: ")
+        v = input("Digite o vertice inicial: ").strip().upper()
         if v not in grafo:
             print("Vertice nao encontrado!")
         else:
@@ -230,8 +237,8 @@ while True:
             print("Ordem de visita:", visitados)
 
     elif opcao == "11":
-        v1 = input("Digite o vertice inicial: ")
-        v2 = input("Digite o vertice destino: ")
+        v1 = input("Digite o vertice inicial: ").strip().upper()
+        v2 = input("Digite o vertice destino: ").strip().upper()
         if v1 not in grafo or v2 not in grafo:
             print("Vertice nao encontrado!")
         else:
