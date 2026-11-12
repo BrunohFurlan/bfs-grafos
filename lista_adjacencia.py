@@ -11,7 +11,9 @@ grafo = {
 
 
 def inserir_vertice(v):
-    if v in grafo:
+    if v == "":
+        print("Nome de vertice invalido!")
+    elif v in grafo:
         print("Vertice ja existe!")
     else:
         grafo[v] = []
@@ -22,13 +24,15 @@ def inserir_aresta(v1, v2):
     if v1 not in grafo or v2 not in grafo:
         print("Vertice nao encontrado!")
     else:
-        if v2 not in grafo[v1]:
+        if v2 in grafo[v1]:
+            print("Aresta ja existe!")
+        else:
             grafo[v1].append(v2)
 
-        if v1 not in grafo[v2]:
-            grafo[v2].append(v1)
+            if v1 not in grafo[v2]:
+                grafo[v2].append(v1)
 
-        print("Aresta inserida!")
+            print("Aresta inserida!")
 
 
 def remover_vertice(v):
@@ -48,13 +52,15 @@ def remover_aresta(v1, v2):
     if v1 not in grafo or v2 not in grafo:
         print("Vertice nao encontrado!")
     else:
-        if v2 in grafo[v1]:
+        if v2 not in grafo[v1]:
+            print("Aresta nao existe!")
+        else:
             grafo[v1].remove(v2)
 
-        if v1 in grafo[v2]:
-            grafo[v2].remove(v1)
+            if v1 in grafo[v2]:
+                grafo[v2].remove(v1)
 
-        print("Aresta removida!")
+            print("Aresta removida!")
 
 
 def calcular_grau():
@@ -254,3 +260,5 @@ while True:
 
     else:
         print("Opcao invalida!")
+
+    input("\nPressione Enter para continuar...")
